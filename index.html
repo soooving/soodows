@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sooDows</title>
+
+    <!-- IMPORT [ CSS ] -->
+    <link rel="stylesheet" type="text/css" href="resource/css/custom.css" />
+
+    <!-- IMPORT [ JS ] -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="resource/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="resource/js/common.js"></script>
+    <script type="text/javascript" src="resource/js/custom.js"></script>
+    
+    <!-- FILE INNER SCRIPT -->
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            idxGetClock();
+            setInterval(idxGetClock, 1000);
+            
+            // 클릭시 화면 전환 이벤트
+            $('div#idxScreen').click(function(){
+                idxChgScreen();
+            })
+
+            // 음량 버튼 이벤트
+            $('div#idxTop').on('click', 'img#soundSvg', function(){
+                chgSoundSvg($(this).attr('src'));
+            }) 
+
+            // 전원 버튼 이벤트
+            $('div#idxTop').on('click', 'img#logoutSvg', function(){
+                location.reload();
+            }) 
+
+            // 다음 페이지 전환 이벤트
+            $('div#idxCenter').on('click', 'img#nextBtn', function(){
+                location.replace('main.html');
+            }) 
+        });
+    </script>
+</head>
+<body>
+    <div class="idx-container" id="idxScreen">
+        <div class="idx-top" id="idxTop">
+            <img src="resource/img/battery.svg" alt="bettery"/>
+            <span class="bettery-txt pL10">85%</span>
+        </div>
+        <div class="idx-center" id="idxCenter">
+            <div class="day-info mB50">
+                <p class="clock-txt" id="clockArea">12:04</p>
+                <p class="date-txt" id="dateArea">Tuesday Dec 04</p>
+                <p class="info-txt mT50">click anywhere on the screen to unlock</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

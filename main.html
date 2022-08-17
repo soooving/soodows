@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sooDows</title>
+
+    <!-- IMPORT [ CSS ] -->
+    <link rel="stylesheet" type="text/css" href="resource/css/custom.css" />
+
+    <!-- IMPORT [ JS ] -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="resource/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="resource/js/common.js"></script>
+    <script type="text/javascript" src="resource/js/custom.js"></script>
+    
+    <!-- FILE INNER SCRIPT -->
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            mainBgScreen();
+            setInterval(mainBgScreen, 600000);
+
+            var resTime = getClockInfo();
+            setInterval(getClockInfo, 1000);
+            $('span#todayInfo').text(resTime.hour +":"+ resTime.minites);
+
+            // 음량 버튼 이벤트
+            $('div#rightBar').on('click', 'img#soundSvg', function(){
+                chgSoundSvg($(this).attr('src'));
+            }) 
+
+            // 클릭 이벤트
+            $(".big-icon").click(function() {
+                mainClickSvg('folder', $(this).children('img')[0].id)
+            })
+            $('div#ctnScreen').on('click', 'img#appMiniSize', function(){
+                mainClickSvg('folder', 'miniSize');
+            }) 
+            $('div#ctnScreen').on('click', 'img#appMaxSize', function(){
+                mainClickSvg('folder', 'maxSize');
+            }) 
+            $('div#ctnScreen').on('click', 'img#appClose', function(){
+                mainClickSvg('folder', 'close');
+            }) 
+            $('div#leftBar').on('click', 'img#homeSvg', function(){
+                mainClickSvg('bar', 'home');
+            }) 
+            $('div#rightBar').on('click', 'span#todayInfo', function(){
+                mainClickSvg('bar', 'todayInfo');
+            }) 
+        });
+    </script>
+</head>
+<body>
+    <div class="main-container" id="mainContainer">
+        <div class="cnt-screen" id="ctnScreen">
+            <div class="icon-area" id="iconArea">
+                <div class="big-icon">
+                    <img src="resource/img/chorme.svg" alt="chorme"/>
+                    <span>chorme</span>
+                </div>
+                <div class="big-icon">
+                    <img src="resource/img/fraphlcs.svg" alt="fraphlcs"/>
+                    <span>그림판</span>
+                </div>
+                <div class="big-icon">
+                    <img src="resource/img/calculator.svg" alt="calculator"/>
+                    <span>계산기</span>
+                </div>
+                <div class="big-icon">
+                    <img src="resource/img/terminal.svg" alt="terminal"/>
+                    <span>terminal</span>
+                </div>
+                <div class="big-icon">
+                    <img src="resource/img/vscode.svg" alt="vscode"/>
+                    <span>vscode</span>
+                </div>
+                <div class="big-icon">
+                    <img src="resource/img/eclips.svg" alt="eclips"/>
+                    <span>eclipse</span>
+                </div>
+                <div class="big-icon">
+                    <img src="resource/img/folder.svg" id="sub-tpolio" alt="folder"/>
+                    <span>folder name</span>
+                </div>
+            </div>
+        </div>
+        <div class="bar-screen" id="barScreen">
+            <div class="left-bar" id="leftBar">
+                <div class="icon">
+                    <img src="resource/img/home.svg" id="homeSvg" alt="home"/>
+                </div>
+            </div>
+            <div class="right-bar" id="rightBar">
+                <div class="icon">
+                    <img src="resource/img/bluetooth.svg" alt="bluetooth"/>
+                </div>
+                <div class="icon">
+                    <img src="resource/img/wifi.svg" alt="wifi"/>
+                </div>
+                <div class="icon">
+                    <img src="resource/img/battery.svg" alt="bettery"/>
+                </div>
+                <div class="icon">
+                    <img src="resource/img/sound-on.svg" id="soundSvg" alt="sound on"/>
+                </div>
+                <div class="icon">
+                    <span id="todayInfo"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
